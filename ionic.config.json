@@ -1,0 +1,7 @@
+{
+  "name": "tll",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
