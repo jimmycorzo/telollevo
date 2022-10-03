@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{this.clasificacion}}
+    </ion-title>
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+  <ion-searchbar class="directorios-searchbar" placeholder="Buscar en Directorio" animated [(ngModel)]="searchQuery"
+    (ionChange)="searchList()"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-row class="directorios-list" *ngFor="let directorio of directoriosList">
+    <ion-col class="directorio-image-wrapper" size="3" (click)="openDetalleDirectorio(directorio)">
+      <ion-item class="directorio-porcentaje">
+        <ion-badge slot="end" *ngIf="directorio.descuentoPorc > 0">
+        </ion-badge>
+      </ion-item>
+      <app-aspect-ratio [ratio]="{w:1, h:1}">
+        <app-image-shell [display]="'cover'" class="directorios-cover" animation="spinner" [src]="directorio?.imagenes"
+          [alt]="'directorio'">
+        </app-image-shell>
+      </app-aspect-ratio>
+    </ion-col>
+
+    <ion-col class="directorio-data-wrapper" size="9">
+      <div class="directorio-info" (click)="openDetalleDirectorio(directorio)">
+        <h2 class="directorio-name">
+          <app-text-shell [data]="directorio?.directorio"></app-text-shell>
+        </h2>
+        <h3 class="directorio-presentacion" *ngIf="directorio?.direccion">
+          <app-text-shell [data]="directorio?.direccion"></app-text-shell>
+        </h3>
+        <h3 class="directorio-precio" *ngIf="directorio?.telefono">
+          <a>{{directorio?.telefono}}</a>
+        </h3>
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

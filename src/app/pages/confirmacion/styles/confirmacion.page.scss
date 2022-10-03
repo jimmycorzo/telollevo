@@ -1,0 +1,36 @@
+  .category-item {
+    .category-anchor {
+      height: 100%;
+      text-decoration: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .category-title {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: red;
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+      }
+    }
+  }
+
+    .ingresar {
+      color: var(--ion-color-primary) !important;
+      margin: 0px;
+      text-align: center;
+    }
+
+.login-content {
+  // --background: var(--page-background);
+  --padding-start: var(--page-margin);
+  --padding-end: var(--page-margin);
+  --padding-top: var(--page-margin);
+  --padding-bottom: var(--page-margin);
+
+}

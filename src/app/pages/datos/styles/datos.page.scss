@@ -1,0 +1,23 @@
+.item-block {
+    height: auto;
+}
+
+.select-block{
+    // line-height: 1.5em;
+    // height: 3em;
+    // overflow: hidden;
+    white-space: normal !important;
+    // text-overflow: ellipsis;
+    // width: 100%;
+}
+
+.item-ios.item-block .item-inner {
+    height: auto;
+}
+
+.select-option {
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --inner-padding-end: 0px;
+}
+

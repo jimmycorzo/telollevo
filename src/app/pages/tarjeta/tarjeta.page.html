@@ -1,0 +1,71 @@
+<ion-content class="fashion-details-content">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button (click)="closeModal()" color="secondary" style="width: 35px; height: 35px;">
+      <ion-icon name="close"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+  <ion-row class="slider-row">
+    <swiper #slide class="details-slides" [autoplay]="true" [keyboard]="true" [pagination]="true" [scrollbar]="true"
+      [zoom]="true" *ngIf="didInit">
+      <ng-template swiperSlide *ngFor="let imagen of directorio.imagenes">
+        <ion-row class="slide-inner-row">
+          <app-image-shell [display]="'cover'" animation="spinner" class="showcase-image" [src]="imagen">
+            <app-aspect-ratio [ratio]="{w:30, h:30}">
+            </app-aspect-ratio>
+          </app-image-shell>
+        </ion-row>
+      </ng-template>
+    </swiper>
+  </ion-row>
+  <ion-row class="description-wrapper">
+    <h3 class="details-name">
+      <app-text-shell animation="gradient" [data]="directorio?.directorio"></app-text-shell>
+    </h3>
+    <span class="details-brand" *ngIf="directorio?.direccion">
+      <app-text-shell animation="gradient" [data]="directorio?.direccion"></app-text-shell>
+    </span>
+  </ion-row>
+  <ion-row class="description-wrapper">
+    <h3 class="details-detalle" *ngIf="directorio?.detalle">
+      <app-text-shell animation="gradient" [data]="directorio?.detalle"></app-text-shell>
+    </h3>
+  </ion-row>
+  <ion-row class="description-wrapper">
+    <ion-col size="6" class="ion-align-self-center">
+      <a><span class="details-brand" *ngIf="directorio?.telefono">
+          Tel.:
+          <app-text-shell animation="gradient" [data]="directorio?.telefono"
+            (click)="CallPhoneNumber(directorio?.telefono)"></app-text-shell>
+        </span></a>
+    </ion-col>
+    <ion-col size="6" class="ion-align-self-center">
+      <span class="details-brand" *ngIf="directorio?.whatsapp">
+        <a href='https://api.whatsapp.com/send?phone=${{directorio?.whatsapp}}'>
+          Whatsapp:
+          <app-text-shell animation="gradient" [data]="directorio?.whatsapp">
+          </app-text-shell>
+        </a>
+      </span>
+    </ion-col>
+  </ion-row>
+  <ion-row class="description-wrapper">
+    <ion-col size="12" class="ion-align-self-center">
+      <span class="details-brand" *ngIf="directorio?.correo">
+        <a href='mailto:{{directorio?.correo}}'>
+          <app-text-shell animation="gradient" [data]="directorio?.correo">
+          </app-text-shell>
+        </a>
+      </span>
+    </ion-col>
+  </ion-row>
+  <ion-row class="description-wrapper" *ngIf="directorio?.web">
+    <ion-col size="12" class="ion-align-self-center" (click)="openLink(directorio?.web)">
+      <span class="details-brand">
+        <a>
+          <app-text-shell animation="gradient" [data]="directorio?.web"></app-text-shell>
+        </a>
+      </span>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

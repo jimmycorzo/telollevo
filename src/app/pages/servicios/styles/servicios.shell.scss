@@ -1,0 +1,6 @@
+app-image-shell.category-cover {
+  --image-shell-loading-background: rgba(var(--page-category-background-rgb), .25);
+  --image-shell-spinner-color: var(--ion-color-lightest);
+  padding: 10px !important;
+  box-shadow: 3px 3px 8px #888888;
+}

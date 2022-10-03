@@ -1,0 +1,86 @@
+@import "theme/mixins/scrollbars";
+
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+:host {
+  --page-margin: var(--app-narrow-margin);
+
+  --page-clases-gutter: calc(var(--page-margin) / 4);
+
+  --page-category-background: var(--ion-color-medium);
+  --page-category-background-rgb: var(--ion-color-medium-rgb);
+
+  --page-actions-padding: 5px;
+  --page-departamentos-gutter: calc(var(--page-margin) / 2);
+  --page-pictures-gutter: calc(var(--page-margin) / 2);
+
+}
+*:focus {
+    outline: none;
+}
+// Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
+.clases-list {
+  --ion-grid-column-padding: var(--page-clases-gutter);
+
+  padding: calc(var(--page-clases-gutter) * 3);
+  height: 100%;
+  align-content: flex-start;
+  overflow: scroll;
+
+  @include hide-scrollbars();
+  .clase-name {
+        margin: auto;
+        font-size: 22px;
+        display: inline-block;
+
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        -ms-word-break: break-all;
+        /* This is the dangerous one in WebKit, as it breaks things wherever */
+        // word-break: break-all;
+        /* Instead use this non-standard one: */
+        // word-break: break-word;
+
+        /* Adds a hyphen where the word breaks, if supported (No Blink) */
+        -moz-hyphens:none;
+        -ms-hyphens:none;
+        -webkit-hyphens: none;
+        hyphens:none;
+        word-break:keep-all;
+
+        width: 180px;
+        top: 30px;
+        position: relative;  
+
+
+}
+  .category-item {
+    .category-anchor {
+      height: 100%;
+      text-decoration: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .clase-title {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: var(--ion-color-lightest);
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+      }
+    }
+  }
+
+  .deals-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 112,223,112;
+      border-radius: 10px;
+  }
+
+}

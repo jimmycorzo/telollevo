@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Buscar</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+  <ion-searchbar class="productos-searchbar" [placeholder]="this.titulo" animated [(ngModel)]="searchQuery"
+    (ionChange)="searchList()"></ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="productos-list" *ngFor="let producto of productosList">
+    <ion-col class="tienda-data" size="12" *ngIf="producto?.tiendas">
+      <h2 class="producto-tienda">
+        {{producto?.tiendas.tienda}}
+      </h2>
+    </ion-col>
+    <ion-col class="producto-image-wrapper" size="3" (click)="openDetalleBuscar(producto)">
+      <ion-item class="producto-porcentaje">
+        <ion-badge slot="end" *ngIf="producto.descuentoPorc > 0">-{{producto.descuentoPorc | percent }}
+        </ion-badge>
+      </ion-item>
+      <app-aspect-ratio [ratio]="{w:1, h:1}">
+        <app-image-shell [display]="'cover'" class="productos-cover" animation="spinner" [src]="producto?.imagen"
+          [alt]="'producto'">
+        </app-image-shell>
+
+      </app-aspect-ratio>
+    </ion-col>
+
+    <ion-col class="producto-data-wrapper" size="9">
+      <div class="producto-info">
+        <h2 class="producto-name">
+          {{producto?.producto}}
+        </h2>
+        <h3 class="producto-presentacion">
+          {{producto?.presentacionTxt}}
+        </h3>
+        <h3 class="producto-precio">
+          {{producto.precioVlr | currency:'$':'symbol':'3.0'}}
+        </h3>
+        <h3 class="producto-descuento" *ngIf="producto.descuentoVlr > 0">
+          {{producto.descuentoVlr | currency:'$':'symbol':'3.0'}}
+        </h3>
+        <div class="counter-item" *ngIf="!producto.agotado">
+          <app-counter-input [(ngModel)]="producto.amount" [producto]="producto" min=0 max=99>
+          </app-counter-input>
+        </div>
+        <div class="producto-agotado" *ngIf="producto.agotado">
+          <ion-badge> agotado
+          </ion-badge>
+        </div>
+      </div>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

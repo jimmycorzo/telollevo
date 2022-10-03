@@ -1,0 +1,130 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mi Pedido</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen>
+
+  <div>
+    <ion-row class="productos-list" *ngFor="let producto of cart">
+      <ion-col class="tienda-data" size="12" *ngIf="producto?.tienda">
+        <h2 class="producto-tienda">
+          {{producto?.tienda}}
+        </h2>
+      </ion-col>
+      <ion-col class="producto-image-wrapper" size="3" (click)="openDetalleProducto(producto)">
+        <ion-item class="producto-porcentaje">
+          <ion-badge slot="end" *ngIf="producto.descuentoPorc > 0">-{{producto.descuentoPorc | percent }}
+          </ion-badge>
+        </ion-item>
+        <app-aspect-ratio [ratio]="{w:1, h:1}">
+          <app-image-shell [display]="'cover'" class="productos-cover" animation="spinner" [src]="producto?.imagen"
+            [alt]="'producto'">
+          </app-image-shell>
+        </app-aspect-ratio>
+      </ion-col>
+
+      <ion-col class="producto-data-wrapper" size="9">
+        <div class="producto-info">
+          <h2 class="producto-name">
+            <app-text-shell [data]="producto?.producto"></app-text-shell>
+          </h2>
+          <h3 class="producto-presentacion">
+            <app-text-shell [data]="producto?.presentacionTxt"></app-text-shell>
+          </h3>
+          <h3 class="producto-precio">
+            <a>{{producto.precioVlr }}</a>
+          </h3>
+          <h3 class="producto-descuento" *ngIf="producto.descuentoVlr > 0">
+            {{producto.descuentoVlr }}
+          </h3>
+          <div class="counter-item">
+            <app-counter-input [(ngModel)]="producto.amount" [producto]="producto" min=0 max=99>
+            </app-counter-input>
+          </div>
+        </div>
+      </ion-col>
+      <ion-col size="12">
+        <h3 class="producto-observaciones" *ngIf="producto.observaciones">
+          <app-text-shell [data]="producto.observaciones"></app-text-shell>
+        </h3>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="10">
+        <ion-item class="input-item item-label-floating" *ngIf="getTotal() > 0">
+          <ion-label position="floating">Dirección de Entrega</ion-label>
+          <ion-select #direccion_select cancelText="Cancelar" okText="Aceptar" [value]="this.direccionSeleccionada"
+            (ionChange)="direccion_seleccionada($event)" placeholder="Seleccione la dirección de entrega"
+            class="select-block">
+            <ion-select-option *ngFor="let direccion of direcciones" [value]="direccion.id">{{direccion.direccion}}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+      <ion-col size="2" class="phone-wrapper">
+        <ion-button style="float: right;" (click)="addDireccion()">
+          <ion-icon name="add-outline"></ion-icon>
+        </ion-button>
+      </ion-col>
+    </ion-row>
+    <ion-item class="input-item item-label-floating" *ngIf="getTotal() > 0">
+      <ion-label position="floating">Forma de Pago</ion-label>
+      <ion-select #pago_select cancelText="Cancelar" okText="Aceptar" [value]="this.pagoSeleccionado"
+        (ionChange)="pago_seleccionado($event)" placeholder="Seleccione la forma de pago" class="select-block">
+        <ion-select-option *ngFor="let cuenta of cuentas" [value]="cuenta.id">
+          {{cuenta.cuenta}}
+        </ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item>
+      <ion-grid style="font-size: 12px; font-stretch: condensed;">
+        <ion-row>
+          <ion-col size="8">
+            Subtotal:
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            {{ getTotal()  }}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="getAdicional() > 0">
+          <ion-col size="8">
+            Tienda Adicional ({{getTiendas()}} tiendas):
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            {{ getAdicional() }}
+          </ion-col>
+        </ion-row>
+        <ion-row *ngIf="getDomicilio() > 0">
+          <ion-col size="8">
+            Domicilio (servicio de transporte):
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            {{ getDomicilio() }}
+          </ion-col>
+        </ion-row>
+        <ion-row style="color: red;" *ngIf="getTotal() > 0">
+          <ion-col size="8">
+            Total:
+          </ion-col>
+          <ion-col size="4" class="ion-text-end">
+            {{ getTotal() + getDomicilio() + getAdicional()  }}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+
+    <ion-button #finalizar expand="full" (click)="pagar()" *ngIf="isEnabled">
+      Finalizar Pedido
+    </ion-button>
+  </div>
+
+</ion-content>

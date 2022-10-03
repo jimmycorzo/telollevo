@@ -1,0 +1,115 @@
+@import "theme/mixins/scrollbars";
+
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+:host {
+  --page-margin: var(--app-narrow-margin);
+
+  --page-tiendas-gutter: calc(var(--page-margin) / 4);
+
+  --page-category-background: var(--ion-color-medium);
+  --page-category-background-rgb: var(--ion-color-medium-rgb);
+}
+
+// Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
+.tiendas-list {
+  --ion-grid-column-padding: var(--page-tiendas-gutter);
+
+  padding: calc(var(--page-tiendas-gutter) * 3);
+  height: 100%;
+  align-content: flex-start;
+  overflow: scroll;
+
+  @include hide-scrollbars();
+  .tienda-name {
+        margin: auto;
+        font-size: 22px;
+        display: inline-block;
+        color: black;
+        z-index: 2000;
+        left:20px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        -ms-word-break: break-all;
+        /* This is the dangerous one in WebKit, as it breaks things wherever */
+        // word-break: break-all;
+        /* Instead use this non-standard one: */
+        // word-break: break-word;
+
+        /* Adds a hyphen where the word breaks, if supported (No Blink) */
+        -moz-hyphens:none;
+        -ms-hyphens:none;
+        -webkit-hyphens: none;
+        hyphens:none;
+        word-break:keep-all;
+
+        width: 140px;
+        top: 40px;
+        position: absolute;  
+
+
+}
+
+  .category-item {
+    .category-anchor {
+      height: 100%;
+      text-decoration: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .category-title {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: var(--ion-color-lightest);
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+        text-align: center;
+      }
+
+      .category-prox {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 800;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: var(--ion-color-lightest);
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+        text-align: center;
+      }
+
+    }
+  }
+
+  .travel-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 0,175,255;
+  }
+
+  .fashion-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 203,50,143;
+  }
+
+  .food-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 235,187,0;
+  }
+
+  .deals-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 112,223,112;
+  }
+
+  .real-estate-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 217,69,58;
+  }
+}

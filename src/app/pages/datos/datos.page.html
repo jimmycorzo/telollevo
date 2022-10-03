@@ -1,0 +1,207 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">Regresar</ion-button>
+    </ion-buttons>
+    <ion-title>Ingresa tus datos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="forms-validations-content">
+  <form class="validations-form" [formGroup]="validationsForm" (submit)="onSubmit(validationsForm.value)">
+    <ion-list class="inputs-list" lines="full">
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Nombre o Razón Social</ion-label>
+        <ion-input type="text" formControlName="nombre" clearInput></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.nombre">
+          <div class="error-message"
+            *ngIf="validationsForm.get('nombre').hasError(validation.type) && (validationsForm.get('nombre').dirty || validationsForm.get('nombre').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Correo Electrónico</ion-label>
+        <ion-input type="text" formControlName="correo" clearInput inputmode="email">
+        </ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.correo">
+          <div class="error-message"
+            *ngIf="validationsForm.get('correo').hasError(validation.type) && (validationsForm.get('correo').dirty || validationsForm.get('correo').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <div>
+        <ion-item class="input-item item-label-floating">
+          <ion-label position="floating">Celular</ion-label>
+          <ion-input clearInput type="text" formControlName="telefono"></ion-input>
+        </ion-item>
+        <div class="error-container">
+          <ng-container *ngFor="let validation of validations.telefono">
+            <div class="error-message"
+              *ngIf="validationsForm.get('telefono').hasError(validation.type) && (validationsForm.get('telefono').dirty || validationsForm.get('telefono').touched)">
+              <ion-icon name="information-circle-outline"></ion-icon>
+              <span>{{ validation.message }}</span>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </ion-list>
+
+    <!-- PSE -->
+    <ion-list class="inputs-list" lines="full" *ngIf="pago=='3'">
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Tipo de Persona</ion-label>
+        <ion-select formControlName="persona" cancelText="Cancelar" okText="Aceptar">
+          <ion-select-option *ngFor="let persona of personas" [value]="persona.id">{{persona.persona}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.persona">
+          <div class="error-message"
+            *ngIf="validationsForm.get('persona').hasError(validation.type) && (validationsForm.get('persona').dirty || validationsForm.get('persona').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Tipo de Documento</ion-label>
+        <ion-select style="width: 100% !important;min-width: 100% !important; " formControlName="tipo"
+          cancelText="Cancelar" okText="Aceptar">
+          <ion-select-option *ngFor="let tipo of tipos" [value]="tipo.id" class="select-block">{{tipo.tipo}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Número Documento</ion-label>
+        <ion-input type="text" formControlName="numero" clearInput></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.numero">
+          <div class="error-message"
+            *ngIf="validationsForm.get('numero').hasError(validation.type) && (validationsForm.get('numero').dirty || validationsForm.get('numero').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Institución Financiera</ion-label>
+        <ion-select formControlName="institucion" cancelText="Cancelar" okText="Aceptar">
+          <ion-select-option *ngFor="let institucion of instituciones" [value]="institucion.financial_institution_code">
+            {{institucion.financial_institution_name}}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.institucion">
+          <div class="error-message"
+            *ngIf="validationsForm.get('institucion').hasError(validation.type) && (validationsForm.get('institucion').dirty || validationsForm.get('institucion').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ion-list>
+
+    <!-- NEQUI -->
+    <ion-list class="inputs-list" lines="full" *ngIf="pago=='2'">
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Teléfono asociado a cuenta de NEQUI</ion-label>
+        <ion-input clearInput type="text" formControlName="nequi"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.nequi">
+          <div class="error-message"
+            *ngIf="validationsForm.get('nequi').hasError(validation.type) && (validationsForm.get('nequi').dirty || validationsForm.get('nequi').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ion-list>
+
+    <!-- CREDIT/DEBIT CARD -->
+    <ion-list class="inputs-list" lines="full" *ngIf="pago=='4'">
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Número de Tarjeta</ion-label>
+        <ion-input clearInput type="text" formControlName="tarjeta" [brmasker]="{mask:'0000 0000 0000 0000', len:19}">
+        </ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.tarjeta">
+          <div class="error-message"
+            *ngIf="validationsForm.get('tarjeta').hasError(validation.type) && (validationsForm.get('tarjeta').dirty || validationsForm.get('tarjeta').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Expira</ion-label>
+        <ion-input clearInput type="month" formControlName="mes" placeholder="Mes" inputmode="numeric" step="1"
+          value="1">
+        </ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.mes">
+          <div class="error-message"
+            *ngIf="validationsForm.get('mes').hasError(validation.type) && (validationsForm.get('mes').dirty || validationsForm.get('mes').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Código CVC</ion-label>
+        <ion-input clearInput type="number" formControlName="cvc" maxlength="4"></ion-input>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.cvc">
+          <div class="error-cvcsage"
+            *ngIf="validationsForm.get('cvc').hasError(validation.type) && (validationsForm.get('cvc').dirty || validationsForm.get('cvc').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">Número de Cuotas</ion-label>
+        <ion-input clearInput type="number" formControlName="cuotas" min="1" max="36"></ion-input>
+      </ion-item>
+    </ion-list>
+
+
+    <!-- Términos y condiciones -->
+    <ion-list class="inputs-list" lines="full">
+      <ion-item class="input-item terms-item">
+        <ion-label>Acepto los <a href="{{this.urlTerminos}}">términos y condiciones</a>
+        </ion-label>
+        <ion-checkbox formControlName="terms"></ion-checkbox>
+      </ion-item>
+      <div class="error-container">
+        <ng-container *ngFor="let validation of validations.terms">
+          <div class="error-message"
+            *ngIf="validationsForm.get('terms').hasError(validation.type) && (validationsForm.get('terms').dirty || validationsForm.get('terms').touched)">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>{{ validation.message }}</span>
+          </div>
+        </ng-container>
+      </div>
+    </ion-list>
+
+    <ion-button class="submit-btn" type="submit" expand="block" fill="outline" [disabled]="!validationsForm.valid">
+      Continuar al pago</ion-button>
+  </form>
+
+</ion-content>

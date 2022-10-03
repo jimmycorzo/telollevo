@@ -1,0 +1,92 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{producto?.producto}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="fashion-details-content">
+  <ion-row class="slider-row">
+          <app-image-shell [display]="'cover'" animation="spinner" class="showcase-image" [src]="producto.imagen"  *ngIf="producto?.imagen && !producto?.video">
+            <app-aspect-ratio [ratio]="{w:30, h:30}">
+            </app-aspect-ratio>
+          </app-image-shell>
+          <video controls webkit-playsinline class="fillWidth" #video class="details-slides" autoplay  *ngIf="producto?.video">
+            <source [src]="producto?.video" type="video/webm" />
+            Su navegador no es compatible con video HTML5.
+        </video>
+    </ion-row>
+  <ion-row class="description-wrapper">
+    <ion-col size="12" class="ion-align-self-center">
+      <h3 class="details-name">
+        <app-text-shell animation="gradient" [data]="producto?.producto"></app-text-shell>
+      </h3>
+      <span class="details-brand" *ngIf="producto?.descripcion">
+        <app-text-shell animation="gradient" [data]="producto?.descripcion"></app-text-shell>
+      </span>
+    </ion-col>
+  </ion-row>
+  <ion-row class="description-wrapper" >
+    <ion-col size="7" class="ion-align-self-center">
+      <span class="details-brand">
+        <app-text-shell animation="gradient" [data]="producto?.presentacionTxt"></app-text-shell>
+      </span>
+      <span class="details-price">
+        <app-text-shell animation="gradient" [data]="producto?.precioVlr | currency :'$':'symbol':'3.0'">
+        </app-text-shell>
+      </span>
+      <span class="details-sale-price" *ngIf="producto?.descuentoVlr > 0">
+        <app-text-shell animation="gradient" [data]="producto?.descuentoVlr ">
+        </app-text-shell>
+      </span>
+      <span class="details-total">
+        <app-text-shell animation="gradient" *ngIf="producto?.amount > 0"
+          [data]="producto.amount * producto.precioVlr "></app-text-shell>
+      </span>
+    </ion-col>
+    <div class="counter-item" *ngIf="!(producto.agotado || this.cerrada )">
+      <app-counter-input [(ngModel)]="producto.amount" [producto]="producto" min=0 max=99>
+      </app-counter-input>
+    </div>
+    <div class="producto-agotado" *ngIf="producto.agotado && !this.proximamente">
+      <ion-badge> agotado
+      </ion-badge>
+    </div>
+    <div class="producto-agotado" *ngIf="this.cerrada && !this.proximamente">
+      <ion-badge> tienda cerrada
+      </ion-badge>
+    </div>
+    <div class="producto-agotado" *ngIf="this.proximamente">
+      <ion-badge> Próximamente
+      </ion-badge>
+    </div>
+  </ion-row>
+
+  <ion-row class="description-wrapper" *ngFor="let titulo of producto.titulos">
+    <ion-col>
+      <ion-item class="input-item item-label-floating">
+        <ion-label position="floating">{{titulo.titulo}}</ion-label>
+        <ion-select #ionSelect cancelText="Cancelar" okText="Aceptar" (ionChange)="select(producto, ionSelect, titulo)"
+          [ngModel]="titulo.seleccionado" multiple="false" class="select-block">
+          <ion-select-option *ngFor="let sel of titulo.seleccionadores" [value]="sel.id">
+            {{sel.seleccionador }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+
+  <!-- <ion-row class="description-wrapper">
+    <ion-col size="12" class="ion-align-self-center">
+      <ion-label position="floating">Observaciones</ion-label>
+      <ion-textarea class="details-obs" matInput maxlength="256" rows="3" cols="60" spellcheck="true"
+        [(ngModel)]="producto.observaciones" placeholder="Coloque aquí las observaciones de su pedido...">
+      </ion-textarea>
+    </ion-col>
+  </ion-row> -->
+
+</ion-content>

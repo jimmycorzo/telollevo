@@ -1,0 +1,50 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tiendas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{this.categoria}}
+    </ion-title>
+    <ion-buttons slot="end" (click)="openSearch(this.categoria, this.categoriaId, '')" #search>
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+<ion-content class="content-wrapper">
+  <ion-row class="tiendas-list">
+    <ion-col class="category-item deals-category" *ngFor="let item of items" size="{{item.tamano}}"
+      [routerLink]="['/clases/', item.id, item.tienda, item?.cerrada, item?.mishorarios?.desde, item?.mishorarios?.hasta, item?.proximamente]">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="item.imagen">
+        <app-aspect-ratio [ratio]="{w:100, h:32}" *ngIf="item.tamano==12">
+          <a class="category-anchor" *ngIf="item?.tienda">
+            <h2 class="category-title" *ngIf="item?.cerrada && item?.mishorarios?.desde && !item?.proximamente">cerrado.
+              abre
+              {{item?.mishorarios?.desde }}</h2>
+            <h2 class="category-title" *ngIf="item?.cerrada && !item?.mishorarios?.desde && !item?.proximamente">Hoy no
+              hay servicio</h2>
+            <h2 class="category-prox" *ngIf="item?.proximamente">Próximamente</h2>
+          </a>
+        </app-aspect-ratio>
+        <app-aspect-ratio [ratio]="{w:100, h:100}" *ngIf="item.tamano==6">
+          <a class="category-anchor" *ngIf="item?.tienda">
+            <h2 class="category-title" *ngIf="item?.cerrada && item?.mishorarios?.desde && !item?.proximamente">cerrado.
+              abre
+              {{item?.mishorarios?.desde }}</h2>
+            <h2 class="category-title" *ngIf="item?.cerrada && !item?.mishorarios?.desde && !item?.proximamente">Hoy no
+              hay servicio</h2>
+            <h2 class="category-prox" *ngIf="item?.proximamente">Próximamente</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+</ion-content>

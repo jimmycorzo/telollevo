@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Servicios Públicos
+    </ion-title>
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+  <ion-searchbar class="servicios-searchbar" placeholder="Buscar en Servicios" animated [(ngModel)]="searchQuery"
+    (ionChange)="searchList()"></ion-searchbar>
+</ion-header>
+
+<ion-content class="content-wrapper">
+
+  <ion-row class="categorias-list">
+    <ion-col class="category-item" *ngFor="let servicio of serviciosList" size="12"
+      [routerLink]="['/links/', servicio.id, servicio.servicio]">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="servicio?.imagenes[0]">
+        <app-aspect-ratio [ratio]="{w:100, h:35}">
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+
+</ion-content>

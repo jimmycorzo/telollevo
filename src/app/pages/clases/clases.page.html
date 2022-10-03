@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="tabs/tiendas"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{this.tienda}}
+    </ion-title>
+    <ion-buttons slot="end" (click)="openSearch(this.tienda, '', this.tiendaId)" #search>
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+  <ion-row class="departamentos-row">
+    <ion-segment scrollable value="{{this.dptoInicial}}" (ionChange)="segmentChanged($event)">
+      <ion-segment-button class="departamentos-item" *ngFor="let departamento of departamentos"
+        value="{{departamento.id}}">
+        <ion-label class="departamentos-name">{{departamento.departamento}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ion-row class="clases-list">
+    <ion-col class="category-item" *ngFor="let clase of clasesList" size="12"
+      [routerLink]="['/productos/', this.tiendaId, this.tienda, clase.id, clase.clase, this.cerrada, this.abre, this.cierra, this.proximamente]">
+      <app-image-shell [display]="'cover'" class="clases-cover" animation="spinner" [src]="clase.imagen">
+        <app-aspect-ratio [ratio]="{w:100, h:26}">
+          <ion-label class="clase-name">{{clase.clase}}</ion-label>
+          <a class="category-anchor" *ngIf="this.cerrada && !this.proximamente">
+            <h2 class="category-title" *ngIf="this.cerrada">cerrado. abre {{this.abre}}</h2>
+          </a>
+          <a class="category-anchor" *ngIf="this.proximamente">
+            <h2 class="category-prox" *ngIf="this.proximamente">Próximamente</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+</ion-content>

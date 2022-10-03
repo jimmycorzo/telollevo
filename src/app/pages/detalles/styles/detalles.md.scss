@@ -1,0 +1,43 @@
+:host-context(.md) {
+  // Custom platform styles here
+  font-size: smaller;
+}
+
+// Custom platform styles for alert should be placed here as they are outside the :host-context scope
+::ng-deep {
+  .alert-wrapper.sc-ion-alert-md {
+    // Custom platform styles for the select-alert here
+      font-size: 14px !important;
+      --min-width: 300px !important;
+  }
+  .alert-radio-label.sc-ion-alert-md{
+    font-size: 14px !important;
+    padding-inline-start:30px;
+    padding-inline-end:10px;
+  }
+.alert-message.sc-ion-alert-md
+{
+    padding-inline-start:10px;
+    padding-inline-end:5px;
+}
+
+.alert-radio-label.sc-ion-alert-md {
+    padding-left: 52px;
+    padding-right: 26px;
+    padding-top: 13px;
+    padding-bottom: 13px;
+    -ms-flex: 1;
+    flex: 1;
+    color: var(--ion-color-step-850, #262626);
+    font-size: 16px;
+    text-overflow: ellipsis;
+    white-space: normal;
+    overflow: hidden;
+}
+
+.alert-tappable.sc-ion-alert-md {
+    position: relative;
+    height: 40px;
+    overflow: hidden;
+}
+}

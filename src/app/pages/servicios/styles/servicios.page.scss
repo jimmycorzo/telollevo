@@ -1,0 +1,278 @@
+@import "theme/mixins/scrollbars";
+
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+:host {
+  --page-margin: var(--app-narrow-margin);
+
+  --page-clases-gutter: calc(var(--page-margin) / 4);
+
+  --page-category-background: var(--ion-color-medium);
+  --page-category-background-rgb: var(--ion-color-medium-rgb);
+
+  --page-actions-padding: 5px;
+  --page-departamentos-gutter: calc(var(--page-margin) / 2);
+  --page-pictures-gutter: calc(var(--page-margin) / 2);
+
+}
+  .deals-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 112,223,112;
+  }
+  .category-item {
+    .category-anchor {
+      height: 100%;
+      text-decoration: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .clase-title {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: var(--ion-color-lightest);
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+      }
+    }
+  }
+
+// Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
+.servicios-list {
+  --ion-grid-column-padding: var(--page-tiendas-gutter);
+
+  padding: calc(var(--page-tiendas-gutter) * 3);
+  height: 100%;
+  align-content: flex-start;
+  overflow: scroll;
+
+  @include hide-scrollbars();
+  .tienda-name {
+        margin: auto;
+        font-size: 22px;
+        display: inline-block;
+        color: black;
+        z-index: 2000;
+        left:20px;
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+
+        -ms-word-break: break-all;
+        /* This is the dangerous one in WebKit, as it breaks things wherever */
+        // word-break: break-all;
+        /* Instead use this non-standard one: */
+        // word-break: break-word;
+
+        /* Adds a hyphen where the word breaks, if supported (No Blink) */
+        -moz-hyphens:none;
+        -ms-hyphens:none;
+        -webkit-hyphens: none;
+        hyphens:none;
+        word-break:keep-all;
+
+        width: 140px;
+        top: 40px;
+        position: absolute;  
+
+
+}
+
+ .category-item {
+    .category-anchor {
+      height: 100%;
+      text-decoration: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .category-title {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: var(--ion-color-lightest);
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+        text-align: center;
+      }
+    }
+  }
+
+  .servicio-image-wrapper {
+          // border: 1px solid var(--ion-color-light-shade);
+          .image-anchor {
+            display:flexbox;
+            position:relative;
+          }
+        }
+
+    .servicio-data-wrapper {
+      padding-left: var(--page-margin);
+      padding-right: calc(var(--page-margin) / 2);
+      // display: flex;
+      // flex-direction: column;
+      // justify-content:start;
+
+      .servicio-info {
+        &:not(:last-child) {
+          margin-bottom: calc(var(--page-margin) / 2);
+        }
+
+        .servicio-name {
+          margin: 0px;
+          margin-bottom: 4px;
+          font-size: 18px !important;
+          text-transform: capitalize !important;
+       }
+
+        .servicio-presentacion {
+          margin: 0px;
+          color: rgba(var(--ion-color-dark-rgb), 0.4);
+          font-size: 16px !important;
+        }
+
+        .servicio-precio {
+          margin: 0px;
+          color: red;
+          font-size: 18px !important;
+          float: left;
+        }
+        
+        .servicio-descuento {
+          margin: 0 0 0 10px;
+          color: rgba(var(--ion-color-dark-rgb), 0.4);
+          font-size: 16px !important;
+          text-decoration: line-through;
+          float: left;
+        }
+
+      }
+    }
+
+        .servicio-porcentaje {
+          position: absolute;
+          font-size: 14px !important;
+          z-index: 1002;
+          right: -15px !important;
+          top: -15px !important; 
+          --inner-border-width: 0 0 0 0;
+
+  	      --background: var(--ion-item-background, var(--ion-background-color, #transparent));
+
+        }
+
+        .servicio-actions-wrapper {
+      font-size: 14px;
+
+      // Make sure we always have space for 10 characters
+      // As ch (width of the character '0') unit is not 100% supported, we will use ex (height of the 'x' character) as a fallback
+      // See: https://www.quirksmode.org/css/units-values/
+      max-width: 10ex; // The 'x' character is semi-square char
+      max-width: 10ch; // ch is the only font unit based on the width of characters
+
+      .servicio-action {
+        margin: 0px;
+      }
+    }
+
+}
+
+
+.servicio-friends-segment {
+  --background: var(--page-segment-background);
+  position: sticky;
+  top: 0;
+  z-index: 8;
+
+  ion-segment-button {
+    --padding-end: var(--page-margin);
+    --padding-start: var(--page-margin);
+    --color: rgba(var(--ion-color-dark-rgb), 0.4);
+    --indicator-color: var(--ion-color-dark);
+
+    text-transform: capitalize;
+    min-height: calc((var(--page-margin) * 3) - var(--page-segment-indicator-height));
+  }
+}
+
+ion-searchbar.friends-searchbar {
+  padding: calc(var(--page-margin) * 1.5) var(--page-margin);
+}
+
+.friends-list {
+  padding: 0px var(--page-margin);
+  margin-bottom: calc(var(--page-margin) * 3);
+}
+
+.empty-list-message {
+  margin: calc(var(--page-margin) * 3);
+  color: rgba(var(--ion-color-dark-rgb), 0.4);
+  text-align: center;
+}
+
+ion-item.friend-item {
+  --inner-padding-start: 0px;
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --padding-bottom: var(--page-margin);
+  --inner-padding-bottom: var(--page-margin);
+
+  &:last-child {
+    --border-style: none;
+    --padding-bottom: 0px;
+    --inner-padding-bottom: 0px;
+  }
+
+}
+
+
+
+
+
+input[type="number"] {
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+  }
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+  }
+
+.wrapper-plusminus {
+    border: black solid thin;
+    width: 30vw;
+    // height: 40px;
+    padding: 0px;
+    display: flex;
+    border-radius: 10px;
+    float: right;
+    top: -5px;
+    position: relative;
+}
+
+.plusminus {
+    height: 100%;
+    width: 30%;
+    background: transparent;
+    border: none;
+    font-size: 30px;
+    color: #5f5fce;
+    outline: none;
+}
+
+.num {
+  // height: 100%;
+  width: 39%;
+  border: none;
+  font-size: 20px;
+text-align: center;
+}

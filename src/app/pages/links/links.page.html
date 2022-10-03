@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="categorias"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{this.servicio}}
+    </ion-title>
+    <!-- <ion-buttons slot="end" (click)="openSearch(this.tienda, '', this.tiendaId)" #search>
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="clases-list">
+    <ion-col class="category-item" *ngFor="let link of linksList" size="12" (click)="openLink(link.url)">
+      <app-image-shell [display]="'cover'" class="clases-cover" animation="spinner" [src]="link.imagen">
+        <app-aspect-ratio [ratio]="{w:100, h:30}">
+          <!-- <ion-label class="link-name">{{link.link}}</ion-label> -->
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+</ion-content>

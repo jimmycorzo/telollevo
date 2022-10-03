@@ -1,0 +1,6 @@
+{
+	"appId": "com.sofcor.tll",
+	"appName": "telollevo",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}

@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="categorias"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Mis Direcciones</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="direcciones-content">
+  <ng-container *ngIf="direcciones">
+    <ion-item-group>
+      <ion-item class="direccion-item" lines="none" *ngFor="let direccion of direcciones">
+        <ion-row class="direccion-item-wrapper">
+          <ion-col class="details-wrapper" (click)="openMaps(direccion)">
+            <h2 class="details-name">{{ direccion.direccion }}</h2>
+            <p class="details-description">{{ direccion.detalle }}</p>
+          </ion-col>
+          <ion-col size="3" class="phone-wrapper">
+            <h3 class="direccion-phone">{{ direccion.telefono }}</h3>
+            <ion-button  (click)="delete(direccion)">
+              <ion-icon name="trash-outline"></ion-icon>
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-item>
+
+    </ion-item-group>
+    <ion-button expand="block" fill="outline" (click)="openMaps(null)">
+      Agregar Nueva Dirección</ion-button>
+  </ng-container>
+</ion-content>

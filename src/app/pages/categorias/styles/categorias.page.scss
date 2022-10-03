@@ -1,0 +1,92 @@
+@import "theme/mixins/scrollbars";
+
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+:host {
+  --page-margin: var(--app-narrow-margin);
+
+  --page-categorias-gutter: calc(var(--page-margin) / 4);
+
+  --page-category-background: var(--ion-color-medium);
+  --page-category-background-rgb: var(--ion-color-medium-rgb);
+}
+
+// Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
+.categorias-list {
+  --ion-grid-column-padding: var(--page-categorias-gutter);
+
+  padding: calc(var(--page-categorias-gutter) * 3);
+  height: 100%;
+  align-content: flex-start;
+  overflow: scroll;
+
+  @include hide-scrollbars();
+
+  .category-item {
+    .category-anchor {
+      height: 100%;
+      text-decoration: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: flex-start;
+
+      .category-title {
+        margin: auto;
+        text-transform: uppercase;
+        font-weight: 400;
+        font-size: 14px;
+        letter-spacing: 1px;
+        padding: calc((var(--page-margin) / 4) * 3) var(--page-margin);
+        color: var(--ion-color-lightest);
+        background-color: var(--page-category-background);
+        border-radius: var(--app-fair-radius);
+      }
+    }
+  }
+
+  .travel-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 0,175,255;
+  }
+
+  .fashion-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 203,50,143;
+  }
+
+  .food-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 235,187,0;
+  }
+
+  .deals-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 112,223,112;
+  }
+
+  .real-estate-category {
+    --page-category-background: #0006084d;
+    --page-category-background-rgb: 217,69,58;
+  }
+
+
+  ion-fab-button {
+  height: 70px;
+  width: 70px;
+}
+ 
+.cart-icon {
+  font-size: 50px;
+}
+ 
+.cart-length {
+  color: var(--ion-color-primary);
+  position: absolute;
+  top: 18px;
+  left: 25px;
+  font-weight: 600;
+  font-size: 1em;
+  min-width: 25px;
+  z-index: 10;
+}
+}

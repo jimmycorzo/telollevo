@@ -1,0 +1,309 @@
+@import "theme/mixins/scrollbars";
+
+// Custom variables
+// Note:  These ones were added by us and have nothing to do with Ionic CSS Custom Properties
+:host {
+  --page-margin: var(--app-narrow-margin);
+
+  --page-clases-gutter: calc(var(--page-margin) / 4);
+
+  --page-category-background: var(--ion-color-medium);
+  --page-category-background-rgb: var(--ion-color-medium-rgb);
+
+  --page-actions-padding: 5px;
+  --page-departamentos-gutter: calc(var(--page-margin) / 2);
+  --page-pictures-gutter: calc(var(--page-margin) / 2);
+
+}
+
+.phone-wrapper {
+  align-self: flex-start;
+
+  .direccion-phone {
+    margin: 0px;
+    font-size: 12px;
+    text-align: end;
+  }
+}
+
+// Note:  All the CSS variables defined below are overrides of Ionic elements CSS Custom Properties
+.productos-list {
+  --ion-grid-column-padding: var(--page-clases-gutter);
+  border-radius: 7px;
+  padding: 10px;
+  box-shadow: 3px 3px 8px #888888;
+  margin-top: 2px;
+  margin-bottom: 10px;
+
+  padding: calc(var(--page-clases-gutter) * 3);
+  // height: 100px;
+  align-content: flex-start;
+  overflow: scroll;
+
+  @include hide-scrollbars();
+
+  .producto-tienda {
+    font-size: 16px;
+    color: red;
+    margin-top: 0px !important;
+    margin-bottom: 0px !important;
+  }
+
+  .producto-image-wrapper {
+
+    // border: 1px solid var(--ion-color-light-shade);
+    .image-anchor {
+      display: flexbox;
+      position: relative;
+    }
+  }
+
+  .producto-observaciones {
+    margin: 0px;
+    margin-bottom: 4px;
+    font-size: 16px !important;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: lighter;
+  }
+
+  .producto-data-wrapper {
+    padding-left: var(--page-margin);
+    padding-right: calc(var(--page-margin) / 2);
+    // display: flex;
+    // flex-direction: column;
+    // justify-content:start;
+
+    .producto-info {
+      &:not(:last-child) {
+        margin-bottom: calc(var(--page-margin) / 2);
+      }
+
+      .producto-name {
+        margin: 0px;
+        margin-bottom: 4px;
+        font-size: 18px !important;
+        text-transform: capitalize !important;
+      }
+
+      .producto-presentacion {
+        margin: 0px;
+        color: rgba(var(--ion-color-dark-rgb), 0.4);
+        font-size: 16px !important;
+      }
+
+      .producto-precio {
+        margin: 0px;
+        color: red;
+        font-size: 18px !important;
+        float: left;
+      }
+
+      .producto-descuento {
+        margin: 0 0 0 10px;
+        color: rgba(var(--ion-color-dark-rgb), 0.4);
+        font-size: 16px !important;
+        text-decoration: line-through;
+        float: left;
+      }
+
+    }
+  }
+
+  .producto-porcentaje {
+    position: absolute;
+    font-size: 14px !important;
+    z-index: 1002;
+    right: -15px !important;
+    top: -15px !important;
+    --inner-border-width: 0 0 0 0;
+
+    --background: var(--ion-item-background, var(--ion-background-color, #transparent));
+
+  }
+
+  .producto-actions-wrapper {
+    font-size: 14px;
+
+    // Make sure we always have space for 10 characters
+    // As ch (width of the character '0') unit is not 100% supported, we will use ex (height of the 'x' character) as a fallback
+    // See: https://www.quirksmode.org/css/units-values/
+    max-width: 10ex; // The 'x' character is semi-square char
+    max-width: 10ch; // ch is the only font unit based on the width of characters
+
+    .producto-action {
+      margin: 0px;
+    }
+  }
+
+}
+
+// .input-item {
+//   --padding-start: 0px;
+//   --padding-end: 0px;
+//   --inner-padding-end: 0px;
+//   font-size: 12px !important;
+//   --min-width: 300px;
+// }
+
+.item-block {
+  height: auto;
+}
+
+.select-block {
+  // line-height: 1.5em;
+  // height: 3em;
+  // overflow: hidden;
+  white-space: normal !important;
+  // text-overflow: ellipsis;
+  // width: 100%;
+}
+
+.item-ios.item-block .item-inner {
+  height: auto;
+}
+
+.select-option {
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --inner-padding-end: 0px;
+}
+
+.producto-friends-segment {
+  --background: var(--page-segment-background);
+  position: sticky;
+  top: 0;
+  z-index: 8;
+
+  ion-segment-button {
+    --padding-end: var(--page-margin);
+    --padding-start: var(--page-margin);
+    --color: rgba(var(--ion-color-dark-rgb), 0.4);
+    --indicator-color: var(--ion-color-dark);
+
+    text-transform: capitalize;
+    min-height: calc((var(--page-margin) * 3) - var(--page-segment-indicator-height));
+  }
+}
+
+ion-searchbar.friends-searchbar {
+  padding: calc(var(--page-margin) * 1.5) var(--page-margin);
+}
+
+.friends-list {
+  padding: 0px var(--page-margin);
+  margin-bottom: calc(var(--page-margin) * 3);
+}
+
+.empty-list-message {
+  margin: calc(var(--page-margin) * 3);
+  color: rgba(var(--ion-color-dark-rgb), 0.4);
+  text-align: center;
+}
+
+ion-item.friend-item {
+  --inner-padding-start: 0px;
+  --inner-padding-end: 0px;
+  --padding-start: 0px;
+  --padding-end: 0px;
+  --padding-bottom: var(--page-margin);
+  --inner-padding-bottom: var(--page-margin);
+
+  &:last-child {
+    --border-style: none;
+    --padding-bottom: 0px;
+    --inner-padding-bottom: 0px;
+  }
+
+}
+
+
+
+
+
+input[type="number"] {
+  -webkit-appearance: textfield !important;
+  -moz-appearance: textfield !important;
+  appearance: textfield !important;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+}
+
+.wrapper-plusminus {
+  border: black solid thin;
+  width: 30vw;
+  // height: 40px;
+  padding: 0px;
+  display: flex;
+  border-radius: 10px;
+  float: right;
+  top: 0px;
+  position: relative;
+}
+
+.plusminus {
+  height: 100%;
+  width: 30%;
+  background: transparent;
+  border: none;
+  font-size: 30px;
+  color: #5f5fce;
+  outline: none;
+}
+
+.num {
+  // height: 100%;
+  width: 39%;
+  border: none;
+  font-size: 20px;
+  text-align: center;
+}
+
+.radio-list {
+  .radio-group {
+    display: block;
+  }
+
+  .radio-item {
+    --padding-start: var(--page-margin);
+    --padding-end: var(--page-margin);
+    --inner-padding-end: 0px;
+
+    .radio-label {
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 0.2px;
+      // color: var(--ion-color-medium);
+    }
+
+    ion-radio {
+      margin-inline-start: 0px;
+    }
+  }
+}
+
+.counter-item {
+  --padding-start: var(--page-margin);
+  --padding-end: var(--page-margin);
+  --inner-padding-end: 0px;
+
+  .counter-label {
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+    color: var(--ion-color-medium);
+  }
+
+  .counter-value {
+    text-align: center;
+    color: var(--ion-color-secondary);
+  }
+
+  app-counter-input {
+    --counter-background: transparent;
+    --counter-color: var(--ion-color-secondary);
+    --counter-border-color: var(--ion-color-secondary);
+  }
+}

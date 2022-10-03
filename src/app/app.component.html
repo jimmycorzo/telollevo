@@ -1,3 +1,47 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
+<ion-app dir="{{textDir}}">
+  <!-- when=false means that the split pane will never expand automatically -->
+  <!-- For more info check https://ionicframework.com/docs/api/split-pane -->
+  <ion-split-pane contentId="menu-content" when="true">
+    <ion-menu contentId="menu-content" class="app-sidemenu">
+      <ion-header>
+        <ion-toolbar>
+          <ion-row class="user-details-wrapper">
+            <ion-col size="4">
+              <app-aspect-ratio [ratio]="{w: 1, h: 1}">
+                <app-image-shell animation="spinner" [src]="'./assets/images/logo.webp'"></app-image-shell>
+              </app-aspect-ratio>
+            </ion-col>
+            <ion-col class="user-info-wrapper" size="8">
+              <h3 class="user-name">Te Lo Llevo</h3>
+              <h5 class="user-handle">Lo hacemos por ti</h5>
+              <div style="text-align: center;font-size: 10px;">Versión {{version}}</div>
+            </ion-col>
+          </ion-row>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle autoHide="false" *ngFor="let p of appPages; let i = index">
+            <ion-item [routerLink]="p.url">
+              <ion-icon slot="start" [name]="p.ionicIcon? p.ionicIcon: ''" [src]="p.customIcon? p.customIcon: ''">
+              </ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle autoHide="true">
+            <ion-item (click)="signout()">
+              <ion-icon slot="start" name="color-wand-outline"></ion-icon>
+              <ion-label>
+                Cerrar Sesión
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <!-- Main app content get's rendered in this router-outlet -->
+    <ion-router-outlet id="menu-content"></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

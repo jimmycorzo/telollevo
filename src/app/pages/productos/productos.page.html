@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="clases"></ion-back-button>
+    </ion-buttons>
+    <ion-title>
+      {{this.clase}}
+    </ion-title>
+    <ion-buttons slot="end" (click)="openSearch(this.clase, '', this.tiendaId)" #search>
+      <ion-button>
+        <ion-icon name="search-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="productos-list" *ngFor="let producto of productos">
+    <ion-col class="producto-image-wrapper" size="3" (click)="openDetalleProducto(producto)">
+      <ion-item class="producto-porcentaje">
+        <ion-badge slot="end" *ngIf="producto.descuentoPorc > 0">-{{producto.descuentoPorc | percent }}
+        </ion-badge>
+      </ion-item>
+      <app-aspect-ratio [ratio]="{w:1, h:1}">
+        <app-image-shell [display]="'cover'" class="productos-cover" animation="spinner" [src]="producto?.imagen"
+          [alt]="'producto'">
+        </app-image-shell>
+      </app-aspect-ratio>
+    </ion-col>
+
+    <ion-col class="producto-data-wrapper" size="9">
+      <div class="producto-info" (click)="openDetalleProducto(producto)">
+        <h2 class="producto-name">
+          <app-text-shell [data]="producto?.producto"></app-text-shell>
+        </h2>
+        <h3 class="producto-presentacion">
+          <app-text-shell [data]="producto?.presentacionTxt"></app-text-shell>
+        </h3>
+        <h3 class="producto-precio">
+          <a>{{producto.precioVlr | currency:'$':'symbol':'3.0'}}</a>
+        </h3>
+        <h3 class="producto-descuento" *ngIf="producto.descuentoVlr > 0">
+          {{producto.descuentoVlr | currency:'$':'symbol':'3.0'}}
+        </h3>
+      </div>
+      <div class="counter-item" *ngIf="!(producto.agotado || this.cerrada)">
+        <app-counter-input (ngModel)="producto.amount" [producto]="producto" min=0 max=99>
+        </app-counter-input>
+      </div>
+      <div class="producto-agotado" *ngIf="producto.agotado && !this.proximamente">
+        <ion-badge> agotado
+        </ion-badge>
+      </div>
+      <div class="producto-agotado" *ngIf="this.cerrada && !this.proximamente">
+        <ion-badge> tienda cerrada
+        </ion-badge>
+      </div>
+      <div class="producto-agotado" *ngIf="this.proximamente">
+        <ion-badge> Próximamente
+        </ion-badge>
+      </div>
+    </ion-col>
+  </ion-row>
+  <ion-infinite-scroll threshold="5%" (ionInfinite)="loadMore($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargar mas productos...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

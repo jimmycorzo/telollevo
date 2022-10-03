@@ -1,7 +1,8 @@
 {
-  "name": "tll",
+  "name": "telollevo",
   "integrations": {
     "capacitor": {}
   },
-  "type": "angular"
+  "type": "angular",
+  "id": "d4954eb5"
 }

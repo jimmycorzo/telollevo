@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Directorio
+    </ion-title>
+    <!-- <ion-buttons slot="end" (click)="openCart()" #cart>
+      <ion-button>
+        <div class="cart-length">{{ cartItemCount | async }}</div>
+        <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-row class="clasificaciones-list">
+    <ion-col class="category-item deals-category" *ngFor="let item of items" size="12"
+      [routerLink]="['/directorios/', item.id, item.clasificacion]">
+      <app-image-shell [display]="'cover'" class="category-cover" animation="spinner" [src]="item.imagen">
+        <app-aspect-ratio [ratio]="{w:100, h:26}">
+          <!-- <ion-label class="clasificacion-name">{{item.clasificacion}}</ion-label> -->
+          <a class="category-anchor">
+            <h2 class="category-title">{{item.clasificacion}}</h2>
+          </a>
+        </app-aspect-ratio>
+      </app-image-shell>
+    </ion-col>
+  </ion-row>
+</ion-content>
