@@ -104,7 +104,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "DirectoriosPage": () => (/* binding */ DirectoriosPage)
 /* harmony export */ });
-/* harmony import */ var _Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _directorios_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./directorios.page.html?ngResource */ 12649);
 /* harmony import */ var _styles_directorios_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/directorios.page.scss?ngResource */ 99705);
@@ -210,7 +210,7 @@ let DirectoriosPage = class DirectoriosPage {
   openDetalleDirectorio(directorio) {
     var _this = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this.modalCtrl.create({
         component: app_pages_tarjeta_tarjeta_page__WEBPACK_IMPORTED_MODULE_7__.TarjetaPage,
         cssClass: 'cart-modal',
@@ -231,7 +231,7 @@ let DirectoriosPage = class DirectoriosPage {
   openCart() {
     var _this2 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this2.modalCtrl.create({
         component: app_pages_carrito_carrito_page__WEBPACK_IMPORTED_MODULE_6__.CarritoPage,
         cssClass: 'cart-modal'

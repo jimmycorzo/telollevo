@@ -128,7 +128,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "RestaurantesPage": () => (/* binding */ RestaurantesPage)
 /* harmony export */ });
-/* harmony import */ var _Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _restaurantes_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./restaurantes.page.html?ngResource */ 67283);
 /* harmony import */ var _styles_restaurantes_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/restaurantes.page.scss?ngResource */ 61368);
@@ -256,7 +256,7 @@ let RestaurantesPage = class RestaurantesPage {
   openCart() {
     var _this = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this.modalCtrl.create({
         component: app_pages_carrito_carrito_page__WEBPACK_IMPORTED_MODULE_8__.CarritoPage,
         cssClass: 'cart-modal'
@@ -271,7 +271,7 @@ let RestaurantesPage = class RestaurantesPage {
   openSearch(titulo, categoriaId, tiendaId) {
     var _this2 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this2.modalCtrl.create({
         component: _buscar_buscar_page__WEBPACK_IMPORTED_MODULE_9__.BuscarPage,
         cssClass: 'cart-modal',

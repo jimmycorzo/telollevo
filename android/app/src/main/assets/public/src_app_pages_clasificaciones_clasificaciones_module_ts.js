@@ -103,7 +103,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "ClasificacionesPage": () => (/* binding */ ClasificacionesPage)
 /* harmony export */ });
-/* harmony import */ var _Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _clasificaciones_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./clasificaciones.page.html?ngResource */ 17992);
 /* harmony import */ var _styles_clasificaciones_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/clasificaciones.page.scss?ngResource */ 75281);
@@ -169,7 +169,7 @@ let ClasificacionesPage = class ClasificacionesPage {
   ngOnInit() {
     var _this = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this.route.params.subscribe(params => {
         _this.categoriaId = params.categoriaId;
         _this.categoria = params.categoria;
@@ -247,7 +247,7 @@ let ClasificacionesPage = class ClasificacionesPage {
   openCart() {
     var _this2 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this2.modalCtrl.create({
         component: app_pages_carrito_carrito_page__WEBPACK_IMPORTED_MODULE_9__.CarritoPage,
         cssClass: 'cart-modal'
@@ -262,7 +262,7 @@ let ClasificacionesPage = class ClasificacionesPage {
   openSearch(titulo, categoriaId, clasificacionId) {
     var _this3 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this3.modalCtrl.create({
         component: app_pages_buscar_buscar_page__WEBPACK_IMPORTED_MODULE_10__.BuscarPage,
         cssClass: 'cart-modal',

@@ -99,7 +99,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "CategoriasPage": () => (/* binding */ CategoriasPage)
 /* harmony export */ });
-/* harmony import */ var _Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _categorias_page_html_ngResource__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./categorias.page.html?ngResource */ 30659);
 /* harmony import */ var _styles_categorias_page_scss_ngResource__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./styles/categorias.page.scss?ngResource */ 40831);
@@ -166,7 +166,7 @@ let CategoriasPage = class CategoriasPage {
   ngOnInit() {
     var _this = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       _this.version = _env_environment__WEBPACK_IMPORTED_MODULE_10__.environment.version;
       _this.searchQuery = '';
       _this.rangeForm = new _angular_forms__WEBPACK_IMPORTED_MODULE_13__.FormGroup({
@@ -228,7 +228,7 @@ let CategoriasPage = class CategoriasPage {
   openCart() {
     var _this2 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       let modal = yield _this2.modalCtrl.create({
         component: app_pages_carrito_carrito_page__WEBPACK_IMPORTED_MODULE_8__.CarritoPage,
         cssClass: 'cart-modal'
@@ -267,7 +267,7 @@ let CategoriasPage = class CategoriasPage {
   }
 
   openMaps(direccion) {
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       if (direccion == null) {
         direccion = new app_models_direcciones_model__WEBPACK_IMPORTED_MODULE_9__.DireccionesModel();
       } // let modal = await this.modalCtrl.create({

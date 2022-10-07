@@ -11,7 +11,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "FirebaseService": () => (/* binding */ FirebaseService)
 /* harmony export */ });
-/* harmony import */ var _Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
+/* harmony import */ var _Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./node_modules/@babel/runtime/helpers/esm/asyncToGenerator.js */ 71670);
 /* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! tslib */ 34929);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! @angular/core */ 22560);
 /* harmony import */ var _angular_fire_auth__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @angular/fire/auth */ 61577);
@@ -85,7 +85,7 @@ let FirebaseService = class FirebaseService {
   }) {
     var _this = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const credential = yield (0,_angular_fire_auth__WEBPACK_IMPORTED_MODULE_16__.createUserWithEmailAndPassword)(_this.afAuth, email, password);
       console.log('result: ', credential);
       const uid = credential.user.uid; // var docRef: DocumentReference = null;
@@ -159,7 +159,7 @@ let FirebaseService = class FirebaseService {
   getDispositivos(tiendaId) {
     var _this2 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var ret = [];
       var user = yield JSON.parse(localStorage.getItem('user'));
       var uid = user.uid;
@@ -201,7 +201,7 @@ let FirebaseService = class FirebaseService {
   sendMensajeTienda(mensaje, tiendaId) {
     var _this3 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var dispositivos = yield _this3.getDispositivos(tiendaId);
 
       if (dispositivos) {
@@ -215,7 +215,7 @@ let FirebaseService = class FirebaseService {
   pushMessage(include_player_ids, mensaje) {
     var _this4 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var keys = yield JSON.parse(localStorage.getItem('keys'));
       const privateKey = keys.onesignal;
       let httpOptionsOneSignal = {
@@ -254,7 +254,7 @@ let FirebaseService = class FirebaseService {
   createDevice(dispositivoId) {
     var _this5 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var user = JSON.parse(localStorage.getItem('user'));
       var uid = user.uid;
       var correo = user.email;
@@ -284,7 +284,7 @@ let FirebaseService = class FirebaseService {
   getDireccionAsync(direccionId) {
     var _this6 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const q = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.query)((0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.collection)(_this6.afs, "direcciones"), (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.where)("id", "==", direccionId));
       const querySnapshot = yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.getDocs)(q);
       if (querySnapshot.docs.length > 0) return querySnapshot.docs[0].data();
@@ -296,7 +296,7 @@ let FirebaseService = class FirebaseService {
   getSucursalAsync(sucursalId) {
     var _this7 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const q = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.query)((0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.collection)(_this7.afs, "sucursales"), (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.where)("id", "==", sucursalId));
       const querySnapshot = yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.getDocs)(q);
       if (querySnapshot.docs.length > 0) return querySnapshot.docs[0].data();
@@ -322,7 +322,7 @@ let FirebaseService = class FirebaseService {
   createPedido(sucursalId, direccion, pago, values, numero) {
     var _this8 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var user = JSON.parse(localStorage.getItem('user'));
       var uid = user.uid;
       var pedidoId;
@@ -337,7 +337,7 @@ let FirebaseService = class FirebaseService {
       yield _this8.updateContador(contador);
       var tiendas = new Array();
       values.forEach( /*#__PURE__*/function () {
-        var _ref = (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (producto) {
+        var _ref = (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (producto) {
           if (!tiendas.find(x => x == producto.tiendaId)) {
             tiendas.push(producto.tiendaId);
           }
@@ -373,7 +373,7 @@ let FirebaseService = class FirebaseService {
         activo: true
       });
       values.forEach( /*#__PURE__*/function () {
-        var _ref2 = (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (producto) {
+        var _ref2 = (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (producto) {
           var detalle = '';
           producto.titulos.forEach(titulo => {
             if (titulo.seleccionado != '') {
@@ -411,7 +411,7 @@ let FirebaseService = class FirebaseService {
       }());
       numero.property1 = sucursalId.toUpperCase() + '-' + contador.contador.toString();
       tiendas.forEach( /*#__PURE__*/function () {
-        var _ref3 = (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (tienda) {
+        var _ref3 = (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* (tienda) {
           var listado = [];
           const q = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.query)((0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.collection)(_this8.afs, "articulos"), (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.where)('pedidoId', '==', pedidoId), (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.where)('tiendaId', '==', tienda));
           const promise = yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.getDocs)(q);
@@ -454,7 +454,7 @@ let FirebaseService = class FirebaseService {
   updateContador(values) {
     var _this9 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       const contadoresRef = (0,_firebase_firestore__WEBPACK_IMPORTED_MODULE_2__.doc)(_this9.afs, "contadores", values.id);
       yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.updateDoc)(contadoresRef, {
         id: values.id,
@@ -507,7 +507,7 @@ let FirebaseService = class FirebaseService {
   getDirecciones() {
     var _this10 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var user = JSON.parse(localStorage.getItem('user'));
       var uid = user.uid;
       const q = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.query)((0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.collection)(_this10.afs, 'direcciones'), (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.where)('uid', '==', uid));
@@ -519,7 +519,7 @@ let FirebaseService = class FirebaseService {
   updateDireccion(values) {
     var _this11 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       if (!values.id) {
         var user = JSON.parse(localStorage.getItem('user'));
         values.uid = user.uid;
@@ -561,7 +561,7 @@ let FirebaseService = class FirebaseService {
   deleteDireccion(values) {
     var _this12 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       yield (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.deleteDoc)((0,_firebase_firestore__WEBPACK_IMPORTED_MODULE_2__.doc)(_this12.afs, "direcciones", values.id));
       return;
     })();
@@ -1078,7 +1078,7 @@ let FirebaseService = class FirebaseService {
   getDatoAsync() {
     var _this13 = this;
 
-    return (0,_Users_jimmy_Desktop_code_tll_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
+    return (0,_Users_jimmy_code_telollevo_node_modules_babel_runtime_helpers_esm_asyncToGenerator_js__WEBPACK_IMPORTED_MODULE_0__["default"])(function* () {
       var user = yield JSON.parse(localStorage.getItem('user'));
       var uid = user.uid;
       const q = (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.query)((0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.collection)(_this13.afs, "datos"), (0,_angular_fire_firestore__WEBPACK_IMPORTED_MODULE_17__.where)("uid", "==", uid));
