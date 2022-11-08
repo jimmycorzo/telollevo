@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInWithCredential, signInWithEmailAndPassword, signInWithPopup } from '@angular/fire/auth';
+import { Auth, createUserWithEmailAndPassword, sendPasswordResetEmail, signInAnonymously, signInWithCredential, signInWithEmailAndPassword, signInWithPopup, UserCredential } from '@angular/fire/auth';
 import { take } from 'rxjs/operators';
 import { UtilService } from './util.service';
 import { addDoc, collection, Firestore } from '@angular/fire/firestore';
-import {  Route } from '@angular/router';
+import { Route } from '@angular/router';
 
 export class AuthInfo {
   constructor(public $uid: string) { }
@@ -111,7 +111,7 @@ export class AuthenticationService {
     return this.fireAuth.signOut();
   }
   // Sign out
-  public signout(): Promise<void>{
+  public signout(): Promise<void> {
     return this.fireAuth.signOut().then(() => {
       localStorage.removeItem('user');
       this.util.navigate('login');
@@ -123,6 +123,11 @@ export class AuthenticationService {
         resolve(user);
       });
     });
+  }
+
+  public signInAnonymously(): Promise<UserCredential> {
+    return signInAnonymously(this.fireAuth)
+
   }
 
 }

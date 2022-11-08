@@ -53,6 +53,7 @@ export class AppComponent implements OnInit {
     this.version = environment.version;
     console.log('version:', this.version);
     this.initializeApp();
+    authService.signInAnonymously();
   }
 
   async initializeApp() {

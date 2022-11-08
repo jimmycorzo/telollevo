@@ -17,7 +17,7 @@ const routes: Routes = [
     children: [
       {
         path: 'directorios',
-        canActivate: [AuthGuard],
+        // canActivate: [AuthGuard],
         data: { authGuardPipe: redirectUnauthorizedToLogin },
         loadChildren: () => import('../clasificaciones/clasificaciones.module').then(m => m.ClasificacionesPageModule)
       },
